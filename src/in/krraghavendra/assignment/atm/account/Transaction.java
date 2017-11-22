@@ -14,14 +14,16 @@ public class Transaction {
 		this.date = date;
 		this.isCredit = isCredit;
 		this.amount = amount;
-		if(previousTransaction == null){
-			if(this.isCredit){
-				this.balance = this.amount;
-			}else{
-				throw new InvalidTransactionException("1st Transaction can not be Debit");
-			}
-		}else{
-			this.balance = previousTransaction.balance + this.amount * (this.isCredit?1:-1);
+		
+		double previousBalance = previousTransaction != null ? previousTransaction.balance:0;
+		
+		if(previousBalance < 0){
+			throw new InvalidTransactionException("balance in previousTransaction can not be negative");
+		}
+		
+		this.balance = previousBalance + this.amount * (this.isCredit?1:-1);
+		if(this.balance < 0){
+			throw new InvalidTransactionException("Insufficient funds to debit");
 		}
 		this.previousTransaction = previousTransaction;
 	}
