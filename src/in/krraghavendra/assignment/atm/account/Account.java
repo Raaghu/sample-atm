@@ -1,7 +1,6 @@
 package in.krraghavendra.assignment.atm.account;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class Account {
