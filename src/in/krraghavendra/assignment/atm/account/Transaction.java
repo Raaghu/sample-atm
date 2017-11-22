@@ -10,8 +10,8 @@ public class Transaction {
 	private double balance;
 	private Transaction previousTransaction;
 		
-	public Transaction(Date date, boolean isCredit, double amount, Transaction previousTransaction) throws InvalidTransactionException {
-		this.date = date;
+	public Transaction(boolean isCredit, double amount, Transaction previousTransaction) throws InvalidTransactionException {
+		this.date = new Date();
 		this.isCredit = isCredit;
 		this.amount = amount;
 		

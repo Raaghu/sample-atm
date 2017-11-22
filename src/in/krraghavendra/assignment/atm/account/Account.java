@@ -18,12 +18,12 @@ public class Account {
 	}
 	
 	public Account credit(double amount) throws InvalidTransactionException {
-		this.lastTransaction = new Transaction(new Date(), true, amount, this.lastTransaction);
+		this.lastTransaction = new Transaction(true, amount, this.lastTransaction);
 		return this;
 	}
 	
 	public Account debit(double amount) throws InvalidTransactionException {
-		this.lastTransaction = new Transaction(new Date(), false, amount, this.lastTransaction);
+		this.lastTransaction = new Transaction(false, amount, this.lastTransaction);
 		return this;
 	}
 	
