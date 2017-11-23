@@ -17,22 +17,26 @@ public class Account {
 	}
 	
 	public Account credit(double amount) throws InvalidTransactionException {
-		this.lastTransaction = new Transaction(true, amount, this.lastTransaction);
+		lastTransaction = new Transaction(true, amount, lastTransaction);
 		return this;
 	}
 	
 	public Account debit(double amount) throws InvalidTransactionException {
-		this.lastTransaction = new Transaction(false, amount, this.lastTransaction);
+		lastTransaction = new Transaction(false, amount, lastTransaction);
 		return this;
 	}
 	
 	public double getBalance(){
-		return this.lastTransaction.getBalance();
+		if(lastTransaction == null){
+			return 0;
+		}else{
+			return lastTransaction.getBalance();
+		}
 	}
 	
 	public List<Transaction> getTransactions() {
 		List<Transaction> transactions = new ArrayList<Transaction>();
-		Transaction transaction = this.lastTransaction;
+		Transaction transaction = lastTransaction;
 		while(transaction != null){
 			transactions.add(0,transaction);
 			transaction = transaction.getPreviousTransaction();

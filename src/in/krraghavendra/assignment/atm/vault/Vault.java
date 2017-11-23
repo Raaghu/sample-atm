@@ -8,15 +8,28 @@ import java.util.Map;
 
 public class Vault {
 	
+	private static Vault vaultObj = null;
+	
 	/**
 	 * vault stores the number of currency notes for each allowed denominations
 	 */
 	private Map<Integer, Integer> vault = new HashMap<Integer, Integer>();
 	
-	public Vault(Integer[] allowedDenominations){
+	private Vault(int[] allowedDenominations){
 		for (Integer allowedDenomination : allowedDenominations) {
 			vault.put(allowedDenomination, 0);
 		}
+	}
+	
+	public static Vault getVault() {
+		if(vaultObj == null){
+			synchronized (Vault.class) {
+				if(vaultObj == null){
+					vaultObj = new Vault(new int[]{50,20,10});
+				}
+			}
+		}
+		return vaultObj;
 	}
 	
 	/**

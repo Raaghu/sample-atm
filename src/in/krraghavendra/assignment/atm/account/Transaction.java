@@ -17,10 +17,6 @@ public class Transaction {
 		
 		double previousBalance = previousTransaction != null ? previousTransaction.balance:0;
 		
-		if(previousBalance < 0){
-			throw new InvalidTransactionException("balance in previousTransaction can not be negative");
-		}
-		
 		this.balance = previousBalance + this.amount * (this.isCredit?1:-1);
 		if(this.balance < 0){
 			throw new InvalidTransactionException("Insufficient funds to debit");

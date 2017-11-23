@@ -1,4 +1,4 @@
-package in.krraghavendra.asignment.atm.tests.vault;
+package in.krraghavendra.assignment.atm.tests.vault;
 
 import java.util.List;
 
@@ -13,7 +13,7 @@ public class TestVault extends TestCase {
 	
 	@Test
 	public void testAdd() throws InvalidDenominationException {
-		Vault vault = new Vault(new Integer[]{50,20,10});
+		Vault vault = Vault.getVault();
 		Vault result = vault.add(50);
 		assertEquals(vault, result);
 		
@@ -28,7 +28,7 @@ public class TestVault extends TestCase {
 	
 	@Test
 	public void testRemove() throws InvalidDenominationException, InsufficientFundsException {
-		Vault vault = new Vault(new Integer[]{50,20,10});
+		Vault vault = Vault.getVault();
 		vault.add(50).add(20).add(20).add(10).add(10).add(10);
 		
 		List<Integer> removedCurrency = vault.remove(30);

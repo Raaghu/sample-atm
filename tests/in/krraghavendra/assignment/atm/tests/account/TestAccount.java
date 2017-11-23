@@ -1,4 +1,4 @@
-package in.krraghavendra.asignment.atm.tests.account;
+package in.krraghavendra.assignment.atm.tests.account;
 
 import java.util.List;
 
